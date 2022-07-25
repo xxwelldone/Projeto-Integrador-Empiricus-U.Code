@@ -1,9 +1,8 @@
 package Entities;
-// Wesley Menezes
 
 public abstract class Conta {
 	private int numero;
-	private String cpf;
+	private String cpf ;
 	private double saldo;
 	private boolean ativo;
 	
@@ -34,6 +33,7 @@ public abstract class Conta {
 	
 	// Constructor 
 	public Conta(int numero, String cpf) {
+		
 		this.numero = numero;
 		this.cpf = cpf;
 	}
