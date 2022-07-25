@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\Users\User\Desktop\Java\Projeto Banco\.metadata\.plugins\org.eclipse.jdt.core
+1067094681.index
