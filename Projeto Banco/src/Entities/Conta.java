@@ -42,9 +42,24 @@ public abstract class Conta {
 	public void debito (double valor) {
 		if (valor<saldo) {
 			saldo -= valor;
-		} else {System.out.println("O valor informado é maior que saldo disponivel");
+		} else {System.out.println("O valor informado é maior que saldo disponível");
 		}
 	}
+	
+	//Método criado para realizar o débito na conta especial.
+	public void debito (double valor, double limite) {
+		double valorDisponivel = getSaldo() + limite;
+		if(valorDisponivel>=valor) {
+			if(valor>saldo) {
+				saldo= 0;
+			} else {
+				saldo -= valor;
+			}
+			
+		} else {System.out.println("O valor informado é maior que Saldo + Limite disponível. Você tem R$ " + valorDisponivel);
+		}
+	}
+	
 	public void credito (double valor) {
 		saldo = saldo + valor;
 	}
