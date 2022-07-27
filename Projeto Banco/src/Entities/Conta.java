@@ -42,6 +42,7 @@ public abstract class Conta {
 	public void debito (double valor) {
 		if (valor<saldo) {
 			saldo -= valor;
+			System.out.println("O valor de " + valor + " foi debitado de sua conta");		//SUGESTAO DE MODIFICACAO
 		} else {System.out.println("O valor informado é maior que saldo disponível");
 		}
 	}
@@ -62,6 +63,7 @@ public abstract class Conta {
 	
 	public void credito (double valor) {
 		saldo = saldo + valor;
+		System.out.println("O valor de " + valor + " foi creditado na sua conta");			//SUGESTAO DE MODIFICACAO
 	}
 	
 }

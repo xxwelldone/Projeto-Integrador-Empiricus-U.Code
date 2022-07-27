@@ -22,6 +22,9 @@ public class ContaPoupanca extends Conta { public ContaPoupanca(int numero, Stri
 		if(diaAniversarioPoupanca == dia) {
 			double correcao = getSaldo()* 0.05;
 			credito(correcao);
+			
+			System.out.println("Alteração de +0,05% no saldo!");		//SUGESTAO DE MUDANCA
+			System.out.println("Saldo Atual: " + getSaldo());			//SUGESTAO DE MUDANCA
 		}
 		
 
