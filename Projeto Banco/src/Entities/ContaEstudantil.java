@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ContaEstudantil extends Conta {
 	
 // This variable is only accessible via method, for that reason it does not have a "set" method.	
-private double emprestimoLimite = 5.000;
+private double emprestimoLimite = 5000;
 
 
 public double getEmprestimoLimite() {

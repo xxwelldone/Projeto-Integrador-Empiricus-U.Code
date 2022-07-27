@@ -42,14 +42,17 @@ public abstract class Conta {
 	public void debito (double valor) {
 		if (valor<saldo) {
 			saldo -= valor;
-			System.out.println("O valor de " + valor + " foi debitado de sua conta");		//SUGESTAO DE MODIFICACAO
+			System.out.println("O valor de " + valor + " foi debitado de sua conta");
+			System.out.println("Seu saldo atual é de:"+ saldo);
 		} else {System.out.println("O valor informado é maior que saldo disponível");
+				System.out.println("Seu saldo atual é de:"+ saldo);
 		}
 	}
 	
 	//Método criado para realizar o débito na conta especial.
 	public void debito (double valor, double limite) {
 		double valorDisponivel = getSaldo() + limite;
+		
 		if(valorDisponivel>=valor) {
 			if(valor>saldo) {
 				saldo= 0;
@@ -63,7 +66,8 @@ public abstract class Conta {
 	
 	public void credito (double valor) {
 		saldo = saldo + valor;
-		System.out.println("O valor de " + valor + " foi creditado na sua conta");			//SUGESTAO DE MODIFICACAO
+		System.out.println("O valor de " + valor + " foi creditado na sua conta");	
+		System.out.println("Seu saldo atual é de:"+ saldo);	//SUGESTAO DE MODIFICACAO
 	}
 	
 }
