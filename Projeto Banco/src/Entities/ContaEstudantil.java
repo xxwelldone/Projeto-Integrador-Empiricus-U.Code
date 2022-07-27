@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ContaEstudantil extends Conta {
 	
 // This variable is only accessible via method, for that reason it does not have a "set" method.	
-private double emprestimoLimite = 5.000;
+private double emprestimoLimite = 5000;
 
 
 public double getEmprestimoLimite() {
@@ -22,6 +22,7 @@ public void pedirEmprestimo(double valor) {
 		super.credito(valor);
 		emprestimoLimite-=valor;
 		System.out.println("Seu limite atual de emprestimo é de: "+ emprestimoLimite);
+		System.out.println("Seu novo saldo é de: "+ super.getSaldo());
 	} else System.out.println("Infelizmente não é possível solicitar emprestimo neste valor. Seu limite de emprestimo é de: "+ emprestimoLimite);
 }
 
@@ -37,6 +38,7 @@ public ContaEstudantil(int numero, String cpf) {
 	// From this point on starts the logic of asking for banking operations and whether to have a loan or not. 
 	
 	//First try on asking for loan
+	
 	System.out.println("Seu tipo de conta é estudantil e isso te da direito à um emprestimo de até 5 mil. Deseja solicitar? 1- Sim | 2 - Não");
 	int resp = sc.nextInt();
 	
@@ -66,11 +68,13 @@ public ContaEstudantil(int numero, String cpf) {
 			System.out.println("Informe o valor a ser debitado: ");
 			double debito = sc.nextDouble();
 			super.debito(debito);
+			System.out.println("Seu saldo atual agora é: "+ super.getSaldo());
 			break;
 		case 2:
 			System.out.println("Informe o valor a ser creditado: ");
 			double credito = sc.nextDouble();
 			super.credito(credito);
+			System.out.println("Seu saldo atual agora é: "+ super.getSaldo());
 			break;
 		case 3: 
 			System.out.print("Informe o valor que irá solicitar:");
