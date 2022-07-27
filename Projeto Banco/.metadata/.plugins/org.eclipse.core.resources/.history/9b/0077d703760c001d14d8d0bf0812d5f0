@@ -1,0 +1,66 @@
+package Entities;
+// Wesley Menezes
+
+public abstract class Conta {
+	private int numero;
+	private String cpf;
+	private double saldo;
+	private boolean ativo;
+
+	// Constructor
+	public Conta(int numero, String cpf) {
+		this.numero = numero;
+		this.cpf = cpf;
+	}
+
+	// Getters and Setters
+
+	if (ativo!=true) {
+		System.out.println("Conta ativa");
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+	/* Saldo does not have a setter for security reasons */
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	// Methods Withdraw and Credit
+
+	public void debito(double valor) {
+		if (valor < saldo) {
+			saldo -= valor;
+		} else {
+			System.out.println("O valor informado é maior que saldo disponivel");
+		}
+	}
+
+	public void credito(double valor) {
+		saldo = saldo + valor;
+	}
+}
+
+

@@ -1,0 +1,14 @@
+package Entities;
+
+//Wesley Menezes
+
+public class ContaEstudantil extends Conta {
+
+	public ContaEstudantil(int numero, String cpf) {
+		super(numero, cpf);
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	
+}

@@ -1,0 +1,33 @@
+package Entities;
+
+//Wesley Menezes
+
+public class ContaEstudantil extends Conta {
+
+	public ContaEstudantil(int numero, String cpf) {
+		super(numero, cpf);
+		System.out.println("Olá,");
+		
+	}
+	
+// This variable is only accessible via method, for that reason it does not have a "set" method.	
+private double emprestimoLimite = 5.000;
+
+
+public double getEmprestimoLimite() {
+	return emprestimoLimite;
+}
+
+// This method is only going to be invoked once the user agrees with the loan and inform the value.
+
+public void pedirEmprestimo(double valor) {
+	
+	if (valor<= emprestimoLimite) {
+		super.credito(valor);
+		emprestimoLimite-=valor;
+		System.out.println("Seu limite atual de emprestimo é de: "+ emprestimoLimite);
+	} else System.out.println("Infelizmente não é possível solicitar emprestimo neste valor. Seu limite de emprestimo é de: "+ emprestimoLimite);
+}
+
+	
+}

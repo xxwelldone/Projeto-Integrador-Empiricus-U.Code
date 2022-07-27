@@ -1,0 +1,58 @@
+package Entities;
+
+import java.util.Scanner;
+
+//Wesley Menezes
+
+public class ContaEstudantil extends Conta {
+
+	public ContaEstudantil(int numero, String cpf) {
+		super(numero, cpf);
+		Scanner sc = new Scanner (System.in);
+		
+		System.out.println("Olá,");
+		System.out.println("Seu saldo atual: R$ "+ super.getSaldo());
+		System.out.println("Seu tipo de conta é estudantil e isso te da direito à um emprestimo de até 5 mil. Deseja solicitar? 1- Sim | 2 - Não");
+		int resp = sc.nextInt();
+		
+		if (resp ==1) {
+			System.out.print("Informe o valor que irá solicitar:");
+			double valor = sc.nextDouble();
+			pedirEmprestimo(valor);
+		} else {
+			System.out.println("Tudo bem :)" );
+			}
+		System.out.println("Deseja realizar alguma nova operação? 1 - Sim || 2 - Não");
+		resp = sc.nextInt();
+		
+		System.out.println("Deseja realizar uma operação de debito ou de credito? 1 - Debito | 2 - Credito | 3 - Sair");
+		resp = sc.nextInt();
+		switch (resp) {
+			case 1:
+				System.out.println("Informe o valor a ser debitado");
+		}
+		System.out.println("Seu saldo atual: "+ super.getSaldo());
+		
+	}
+	
+// This variable is only accessible via method, for that reason it does not have a "set" method.	
+private double emprestimoLimite = 5.000;
+
+
+public double getEmprestimoLimite() {
+	return emprestimoLimite;
+}
+
+// This method is only going to be invoked once the user agrees with the loan and inform the value.
+
+public void pedirEmprestimo(double valor) {
+	
+	if (valor<= emprestimoLimite) {
+		super.credito(valor);
+		emprestimoLimite-=valor;
+		System.out.println("Seu limite atual de emprestimo é de: "+ emprestimoLimite);
+	} else System.out.println("Infelizmente não é possível solicitar emprestimo neste valor. Seu limite de emprestimo é de: "+ emprestimoLimite);
+}
+
+	
+}

@@ -1,0 +1,93 @@
+package Entities;
+
+import java.util.Scanner;
+
+//Wesley Menezes
+
+public class ContaEstudantil extends Conta {
+	
+// This variable is only accessible via method, for that reason it does not have a "set" method.	
+private double emprestimoLimite = 5.000;
+
+
+public double getEmprestimoLimite() {
+	return emprestimoLimite;
+}
+
+// This method is only going to be invoked once the user agrees with the loan and inform the value.
+
+public void pedirEmprestimo(double valor) {
+	
+	if (valor<= emprestimoLimite) {
+		super.credito(valor);
+		emprestimoLimite-=valor;
+		System.out.println("Seu limite atual de emprestimo é de: "+ emprestimoLimite);
+	} else System.out.println("Infelizmente não é possível solicitar emprestimo neste valor. Seu limite de emprestimo é de: "+ emprestimoLimite);
+}
+
+// To make the main class shorter all the necessary steps are included inside the construtor.
+
+public ContaEstudantil(int numero, String cpf) {
+	super(numero, cpf);
+	Scanner sc = new Scanner (System.in);
+	
+	System.out.println("Olá,");
+	System.out.println("Seu saldo atual: R$ "+ super.getSaldo());
+	
+	// From this point on starts the logic of asking for banking operations and whether to have a loan or not. 
+	
+	//First try on asking for loan
+	System.out.println("Seu tipo de conta é estudantil e isso te da direito à um emprestimo de até 5 mil. Deseja solicitar? 1- Sim | 2 - Não");
+	int resp = sc.nextInt();
+	
+	if (resp ==1) {
+		System.out.print("Informe o valor que irá solicitar:");
+		double valor = sc.nextDouble();
+		pedirEmprestimo(valor);
+	} else {
+		System.out.println("Tudo bem :)" );
+		}
+	
+	// Asking for new operations
+	System.out.println("Deseja realizar alguma nova operação? 1 - Sim || 2 - Não");
+	resp = sc.nextInt();
+	
+	// Start of a loop where, while the user still wants to make a new operation, it still offers the possibilities to them. 
+	
+	while (resp==1) {
+	
+	System.out.println("Informe o tipo de operação que deseja realizar: 1 - Débito | 2 - Crédito | 3 - Emprestimo");
+	int operacoes = sc.nextInt();
+	
+	// Switch separating the operations
+	
+	switch (operacoes) {
+		case 1:
+			System.out.println("Informe o valor a ser debitado: ");
+			double debito = sc.nextDouble();
+			super.debito(debito);
+			break;
+		case 2:
+			System.out.println("Informe o valor a ser creditado: ");
+			double credito = sc.nextDouble();
+			super.credito(credito);
+			break;
+		case 3: 
+			System.out.print("Informe o valor que irá solicitar:");
+			double valor = sc.nextDouble();
+			pedirEmprestimo(valor);
+			System.out.println("Seu saldo atual é de :" + super.getSaldo()+"\n"+ "Seu limite de empréstimo atual é de:"+ emprestimoLimite);
+			break;
+	}
+	// Finishing the Switch, we are still in the While loop making sure the user are still interested on making new baking operations 
+	
+	System.out.println("Fim da operação. Deseja realizar uma nova operação? 1 - Sim | 2 - Não");
+	resp = sc.nextInt();
+	}
+	// Out of the While loop, we finish the process by a warming goodbye
+	
+	System.out.println("Até mais ;)");
+	
+}
+	
+}

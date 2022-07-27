@@ -1,0 +1,36 @@
+package Entities;
+
+//Wesley Menezes
+
+public class ContaEstudantil extends Conta {
+
+	public ContaEstudantil(int numero, String cpf) {
+		super(numero, cpf);
+		
+	}
+	
+private double emprestimoLimite = 5.000;
+//private double valorEmprestimo;
+
+public double getEmprestimoLimite() {
+	return emprestimoLimite;
+}
+
+//public double getValorEmprestimo() {
+//	return valorEmprestimo;
+//}
+//public void setValorEmprestimo(double valorEmprestimo) {
+//	this.valorEmprestimo = valorEmprestimo;
+//}
+
+public void pedirEmprestimo(double valor) {
+	
+	if (valor<= emprestimoLimite) {
+		super.credito(valor);
+		emprestimoLimite-=valor;
+		System.out.println("Seu limite atual de emprestimo é de: "+ emprestimoLimite);
+	} else System.out.println("Infelizmente não é possível solicitar emprestimo neste valor. Seu limite de emprestimo é de: "+ emprestimoLimite);
+}
+
+	
+}

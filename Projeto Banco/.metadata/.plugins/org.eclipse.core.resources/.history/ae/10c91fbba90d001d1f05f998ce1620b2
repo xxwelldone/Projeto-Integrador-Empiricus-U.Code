@@ -1,0 +1,8 @@
+package Entities;
+
+public class ContaEstudantil extends Conta {
+
+	public ContaEstudantil (int numero, int cpf) {
+		super (numero, cpf);
+	}
+}
