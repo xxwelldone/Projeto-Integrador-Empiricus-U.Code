@@ -38,18 +38,25 @@ public abstract class Conta {
 		this.cpf = cpf;
 	}
 	// Methods Withdraw and Credit 
+
 	
 	public void debito (double valor) {
-		if (valor<saldo) {
+		if (valor<=saldo) {
 			saldo -= valor;
+			System.out.println("===============================");
 			System.out.println("O valor de " + valor + " foi debitado de sua conta");
 			System.out.println("Seu saldo atual é de:"+ saldo);
-		} else {System.out.println("O valor informado é maior que saldo disponível");
+			System.out.println("===============================");
+		} else {
+				System.out.println("==============================="); 
+				System.out.println("O valor informado é maior que saldo disponível");
 				System.out.println("Seu saldo atual é de:"+ saldo);
+				System.out.println("===============================");
 		}
 	}
 	
 	//Método criado para realizar o débito na conta especial.
+	
 	public void debito (double valor, double limite) {
 		double valorDisponivel = getSaldo() + limite;
 		
@@ -60,14 +67,18 @@ public abstract class Conta {
 				saldo -= valor;
 			}
 			
-		} else {System.out.println("O valor informado é maior que Saldo + Limite disponível. Você tem R$ " + valorDisponivel);
+		} else {System.out.println("==============================="); 
+				System.out.println("O valor informado é maior que Saldo + Limite disponível. Você tem R$ " + valorDisponivel);
+				System.out.println("===============================");
 		}
 	}
 	
 	public void credito (double valor) {
 		saldo = saldo + valor;
+		System.out.println("===============================");
 		System.out.println("O valor de " + valor + " foi creditado na sua conta");	
-		System.out.println("Seu saldo atual é de:"+ saldo);	//SUGESTAO DE MODIFICACAO
+		System.out.println("Seu saldo atual é de:"+ saldo);
+		System.out.println("===============================");
 	}
 	
 }
