@@ -25,6 +25,7 @@ public abstract class Conta {
 	}
 	/*Saldo does not have a setter for security reasons*/
 	
+	
 	public boolean isAtivo() {
 		return ativo;
 	}
@@ -44,13 +45,17 @@ public abstract class Conta {
 		if (valor<=saldo) {
 			saldo -= valor;
 			System.out.println("===============================");
+			System.out.println();
 			System.out.println("O valor de " + valor + " foi debitado de sua conta");
 			System.out.println("Seu saldo atual é de:"+ saldo);
+			System.out.println();
 			System.out.println("===============================");
 		} else {
 				System.out.println("==============================="); 
+				System.out.println();
 				System.out.println("O valor informado é maior que saldo disponível");
 				System.out.println("Seu saldo atual é de:"+ saldo);
+				System.out.println();
 				System.out.println("===============================");
 		}
 	}
