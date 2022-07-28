@@ -28,7 +28,29 @@ public void pedirEmprestimo(double valor) {
 	} else System.out.println("Infelizmente não é possível solicitar emprestimo neste valor. Seu limite de emprestimo é de: "+ emprestimoLimite);
 }
 
-// Method for navegation inside Student Account
+// Method that checks and let user pay for loan acquired .
+//It is only possible to delete account and have boolean as false once debt is paid. 
+public void pagarEmprestimo(double valor) {
+	
+	if (valor <= super.getSaldo()) {
+		super.debito(valor);
+		emprestimoLimite+= valor;
+		System.out.println("===============================");
+		System.out.println();
+		System.out.println("Seu pagamento foi de "+ valor+". Seu limite subiu para "+ emprestimoLimite+". Agora você pode encerrar a conta.");
+
+
+	} else {
+		System.out.println("===============================");
+		System.out.println();
+		System.out.println("Valor inserido maior que saldo em conta. Você precisa ter saldo em conta maior que pagamento da divida.");
+		System.out.println();
+		System.out.println("===============================");
+	}
+}
+
+
+// Method for navigation inside Student Account
 public void nav() {
 	int question;
 	Scanner sc = new Scanner (System.in);
@@ -94,6 +116,7 @@ public void nav() {
 
 }
 
+// Method for deleting account and checking whether it has debts or not before allowing and setting boolean attribute as false.
 public void cancelar() {
 	int cancelQuest;
 	Scanner sc = new Scanner(System.in);
@@ -128,27 +151,10 @@ public void cancelar() {
 	}
 	}
 	 
-public void pagarEmprestimo(double valor) {
-	
-	if (valor <= super.getSaldo()) {
-		super.debito(valor);
-		emprestimoLimite+= valor;
-		System.out.println("===============================");
-		System.out.println();
-		System.out.println("Seu pagamento foi de "+ valor+". Seu limite subiu para "+ emprestimoLimite+". Agora você pode encerrar a conta.");
-
-
-	} else {
-		System.out.println("===============================");
-		System.out.println();
-		System.out.println("Valor inserido maior que saldo em conta. Você precisa ter saldo em conta maior que pagamento da divida.");
-		System.out.println();
-		System.out.println("===============================");
-	}
-}		
+		
 	
 
-// To make the main class shorter all the necessary steps are included inside the construtor.
+// To make the main class shorter all the necessary steps are included inside the constructor.
 
 public ContaEstudantil(int numero, String cpf) {
 	super(numero, cpf);

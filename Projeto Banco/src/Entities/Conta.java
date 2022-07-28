@@ -60,8 +60,16 @@ public abstract class Conta {
 		}
 	}
 	
+	public void credito (double valor) {
+		saldo = saldo + valor;
+		System.out.println("===============================");
+		System.out.println("O valor de " + valor + " foi creditado na sua conta");	
+		System.out.println("Seu saldo atual é de:"+ saldo);
+		System.out.println("===============================");
+	}
 	//Método criado para realizar o débito na conta especial.
 	
+	/* Metodo criado pela Geisiele */
 	public void debito (double valor, double limite) {
 		double valorDisponivel = getSaldo() + limite;
 		
@@ -77,13 +85,7 @@ public abstract class Conta {
 				System.out.println("===============================");
 		}
 	}
+	/* */
 	
-	public void credito (double valor) {
-		saldo = saldo + valor;
-		System.out.println("===============================");
-		System.out.println("O valor de " + valor + " foi creditado na sua conta");	
-		System.out.println("Seu saldo atual é de:"+ saldo);
-		System.out.println("===============================");
-	}
 	
 }
