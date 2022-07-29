@@ -2,4 +2,3 @@ INDEX VERSION 1.131+C:\Users\User\Desktop\Projeto\projeto-banco\Projeto Banco\.m
 3201793814.index
 1509799344.index
 1865797976.index
-1067094681.index
