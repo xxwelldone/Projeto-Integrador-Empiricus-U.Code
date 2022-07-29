@@ -43,7 +43,8 @@ Scanner imput1 = new Scanner(System.in);
 				if (getSaldo() >= 30) {
 					debito(30);
 					contadorTalao += 1;
-					System.out.println("Voce solicitou cheque...");
+					System.out.println("Voce solicitou cheque");
+					System.out.println("Quantidades de cheques solicitados: " + contadorTalao);
 					System.out.println("Saldo atual: " + getSaldo());
 					} else {
 						System.out.println("Saldo insuficiente!");
@@ -56,7 +57,7 @@ Scanner imput1 = new Scanner(System.in);
 				
 			}
 				
-			if (resposta != 1 || resposta != 2) {
+			if (resposta != 1 && resposta != 2) {
 				System.out.println("Resposta inválida, tente novamente!");
 			}
 			
