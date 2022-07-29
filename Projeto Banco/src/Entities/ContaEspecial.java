@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ContaEspecial extends Conta {
 	
-	private Double limite = 1000d;
+	private double limite = 1000;
 
 	public double getLimite() {
 		return limite;
@@ -19,66 +19,68 @@ public class ContaEspecial extends Conta {
 	public ContaEspecial(int numero, String cpf) {
 		super(numero, cpf);
 		
-		System.out.println("Você tem R$ " + limite + " de limite."); //temos que verificar se há limite disponível.
-		System.out.println("Deseja utilizar? (1- Sim / 2- Não)");
-		
-		Scanner scanner = new Scanner(System.in);
-		int resposta = scanner.nextInt();
-		
-		if(resposta == 1) {
-			boolean finalizar = false;
-			do {
-				
-				System.out.println("Digite o valor desejado: ");
-				double valorSolicitado = scanner.nextDouble();
-				
-				if(valorSolicitado>limite) {
-					System.out.println("O valor excede o seu limite");
-				}else {
-					usarLimite(valorSolicitado);
-					finalizar = true;
-					//TODO Chamar o método do menu inicial			
-
-				}
-				
-			} while(finalizar == false);
-		}else if(resposta == 2){
-			//TODO Chamar o método do menu inicial			
+		if(limite>0) {
+			System.out.println("Você tem R$ " + getSaldo() + " de saldo.");
+			if(getSaldo()>0) {
+				System.out.println("Sua conta está positiva, deseja realmente solicitar limite? (1- Sim / 2- Não)");
+			}else {
+				System.out.println("Deseja solicitar limite? (1- Sim / 2- Não)");
+			}
+			Scanner scanner = new Scanner(System.in);
+			int resposta = scanner.nextInt();
+			
+			if(resposta == 1) {
+				boolean finalizar = false;
+				do {
+					System.out.println("Você tem R$ " + limite + " de limite.");
+					System.out.println("Digite o valor desejado: ");
+					double valorSolicitado = scanner.nextDouble();
+					
+					if(valorSolicitado>limite) {
+						System.out.println("O valor excede o seu limite");
+					}else {
+						usarLimite(valorSolicitado);
+						finalizar = true;
+					}
+					
+				} while(finalizar == false);
+			}else if(resposta == 2){
+				System.out.println("Obrigado.");
+			}else {
+				System.out.println("Resposta inválida, tente novamente!");
+			}
+			scanner.close();
 		}else {
-			System.out.println("Resposta inválida, tente novamente!");
+			System.out.println("Desculpe, você não tem limite disponível.");
 		}
-		scanner.close();
+		//TODO Chamar o método do menu inicial			
 	}
 	
 	public void usarLimite (double valor) {
 		if(valor<=limite) {
 			super.credito(valor);
 			limite-=valor;
-		}else
+		}else {
 			System.out.println("Valor indisponível, seu saldo atual é R$ " + limite);
-				
+		}		
 	}
-		
-//	public void usarLimite(double valor) {
-//		double valorDisponivel = getSaldo() + limite;
-//		if(valorDisponivel>=valor) {
-//			super.debito(valor, limite);
-//			setLimite(valorDisponivel-valor);
-//		}
-//	}
-//	
-//	@Override
-//	public void credito(double valor) {
-//		double valorUtilizadoLimite = 1000 - limite;
-//		if(valorUtilizadoLimite>0) {
-//			if(valor>valorUtilizadoLimite) {
-//				limite += valorUtilizadoLimite;	
-//				super.credito(valor-valorUtilizadoLimite);
-//			}else {
-//				limite += valor;
-//			}
-//		}else {
-//			super.credito(valor);
-//		}
-//	}
+	public void encerrar () {
+		if(limite<1000) {
+			System.out.println("No momento não é possível encerrar sua conta, você precisa liquidar seu débito R$ " + limite);
+			System.out.println("Deseja liquidar? (1- Sim / 2- Não)");
+			Scanner scanner = new Scanner(System.in);
+			int resposta = scanner.nextInt();
+			
+			if (resposta == 1) {
+				//TODO chamar método do crédito
+			}else if(resposta == 2){
+				System.out.println("Sua conta permanecerá ativa até a liquidação, obrigado"); 			
+			}else {
+				System.out.println("Resposta inválida, tente novamente!");
+			}
+			//TODO Chamar o método do menu inicial
+			scanner.close();
+				
+		}
+	}
 }
