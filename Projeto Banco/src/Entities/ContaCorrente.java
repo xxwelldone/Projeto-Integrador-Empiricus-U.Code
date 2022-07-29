@@ -16,15 +16,6 @@ public class ContaCorrente extends Conta {
 	private int valorCre = 0;
 //END ATRIBUTES
 //===============================================================================================================
-//INITIATION GETTERS AND SETTERS
-	public int getContadorTalao() {
-		return contadorTalao;
-	}
-	public void setContadorTalao(int contadorTalao) {
-		this.contadorTalao = contadorTalao;
-	}
-//END GETTERS AND SETTERS
-//===============================================================================================================
 //INITIATION SCANNER
 Scanner imput1 = new Scanner(System.in);
 //===============================================================================================================
@@ -41,9 +32,9 @@ Scanner imput1 = new Scanner(System.in);
 			
 			if (resposta == 1) {
 				if (getSaldo() >= 30) {
-					debito(30);
 					contadorTalao += 1;
-					System.out.println("Voce solicitou cheque");
+					System.out.println("Voce solicitou cheque...");
+					debito(30);
 					System.out.println("Quantidades de cheques solicitados: " + contadorTalao);
 					System.out.println("Saldo atual: " + getSaldo());
 					} else {
@@ -52,13 +43,23 @@ Scanner imput1 = new Scanner(System.in);
 			}
 			if (resposta == 2) {
 				System.out.println("Obrigado por utilizar o banco Nirvana G6");
+				System.out.println("Encerrando conta..");
+				super.setAtivo(false);
+				System.out.println("Conta encerrada");
 				System.out.println("Saindo...");	
-				System.exit(0);
 				
 			}
 				
 			if (resposta != 1 && resposta != 2) {
 				System.out.println("Resposta inválida, tente novamente!");
+			}
+			
+			if (contadorTalao == 3) {
+				System.out.println("Obrigado por utilizar o banco Nirvana G6");
+				System.out.println("Encerrando conta..");
+				System.out.println("Conta encerrada");
+				super.setAtivo(false);
+				System.out.println("Saindo...");
 			}
 			
 		} while (resposta != 2 && contadorTalao < 3);
@@ -115,6 +116,7 @@ Scanner imput1 = new Scanner(System.in);
 //===============================================================================================================
 //INITIATION METHOD SAIR
 	void movSair() {
+		System.out.println();
 		System.out.println("Voce escolheu: Sair");
 		pedirTalao();
 	}
@@ -123,6 +125,8 @@ Scanner imput1 = new Scanner(System.in);
 //INITIATION CONSTRUCTOR
 	public ContaCorrente(int numero, String cpf) {
 		super(numero, cpf);
+		super.setAtivo(true);
+		apresentacao();
 		do {
 			escolherMov();
 			
@@ -140,7 +144,7 @@ Scanner imput1 = new Scanner(System.in);
 			movSair();
 		}
 			
-		} while (contaMov < 100 && movimentoEsco != 3);	
+		} while (contaMov < 100 && movimentoEsco != 3);
 	}
 //END CONSTRUCTOR
 //===============================================================================================================
