@@ -9,6 +9,7 @@ import Entities.ContaEstudantil;
 import Entities.ContaPoupanca;
 
 public class Application {
+	
 //Wesley Menezes
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -89,9 +90,16 @@ public class Application {
 			sc.nextLine();
 			ContaEstudantil estudente = new ContaEstudantil(conta, cpf);
 			break;
+		case 6:
+			System.out.println("Obrigado por utilizar o banco Nirvana. :D ");
+			sc.close();
+			break;
+		default:
+			System.out.println("Opção não válida.");
+			break;
 
 		}
-
+		
 		
 
 	}
