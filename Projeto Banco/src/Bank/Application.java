@@ -11,10 +11,10 @@ import Entities.ContaPoupanca;
 
 public class Application {
 	
-//Wesley Menezes
+//Wesley Menezes & Geisiele Luzia Deda
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		Integer conta, niver, resposta;
+		int conta, niver, resposta;
 		String cpf;
 		Scanner sc = new Scanner(System.in);
 		
@@ -23,6 +23,7 @@ public class Application {
 			System.out.println("||                             ||");
 			System.out.println("||       Banco Nirvana G6      || ");
 			System.out.println("||   Seu paraiso financeiro    ||");
+			System.out.println("||                             ||");
 			System.out.println("===============================");
 			System.out.println();
 			System.out.println("Que tipo de conta deseja acessar: ");
@@ -94,6 +95,7 @@ public class Application {
 				ContaEstudantil estudente = new ContaEstudantil(conta, cpf);
 				break;
 			case 6:
+				System.out.println();
 				System.out.println("Obrigado por utilizar o banco Nirvana. :D ");
 				sc.close();
 				break;
@@ -102,6 +104,7 @@ public class Application {
 				break;
 			}
 		}while(resposta != 6);
+
 	}
 
 }

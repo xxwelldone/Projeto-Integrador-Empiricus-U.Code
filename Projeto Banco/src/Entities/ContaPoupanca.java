@@ -115,7 +115,7 @@ public class ContaPoupanca extends Conta {
 					contaPoupanca.correcao(dataAtual);								
 					
 					System.out.println();
-					System.out.println("Obrigado por utilizar o banco 'nome do banco'!");
+					System.out.println("Obrigado por utilizar o banco Nirvana!");
 					System.out.println("Saindo...");	
 					System.exit(0);
 				}
@@ -158,7 +158,7 @@ public class ContaPoupanca extends Conta {
 					contaPoupanca.correcao(dataAtual);								
 					
 					System.out.println();
-					System.out.println("Obrigado por utilizar o banco 'nome do banco'!");
+					System.out.println("Obrigado por utilizar o banco Nirvana!");
 					System.out.println("Saindo...");	
 					System.exit(0);
 				}
@@ -173,7 +173,7 @@ public class ContaPoupanca extends Conta {
 				contaPoupanca.correcao(dataAtual);								
 				
 				System.out.println();
-				System.out.println("Obrigado por utilizar o banco 'nome do banco'!");
+				System.out.println("Obrigado por utilizar o banco Nirvana!");
 				System.out.println("Saindo...");	
 				System.exit(0);
 			}

@@ -116,7 +116,7 @@ public class ContaEstudantil extends Conta {
 						System.out.println();
 						pagarEmprestimo(pagamento);
 						System.out.println("===============================");
-						
+
 					}
 				}
 				break;
@@ -135,8 +135,6 @@ public class ContaEstudantil extends Conta {
 		}
 		// Checking if there are debts and whether to delete account or not.
 		cancelar();
-//	
-//	System.out.println("Até mais ;)");
 
 	}
 
@@ -167,7 +165,7 @@ public class ContaEstudantil extends Conta {
 				System.out.println("Conta encerrada T.T ");
 				System.out.println();
 				System.out.println("===============================");
-				sc.close();
+
 			}
 			break;
 
@@ -198,18 +196,22 @@ public class ContaEstudantil extends Conta {
 				"Seu tipo de conta é estudantil e isso te da direito à um emprestimo de até 5 mil. Deseja solicitar? 1- Sim | 2 - Não");
 		int resp = sc.nextInt();
 
-		if (resp == 1) {
+		switch (resp) {
+		case 1:
 			System.out.print("Informe o valor que irá solicitar:");
 			double valor = sc.nextDouble();
 			pedirEmprestimo(valor);
-		} else {
+			break;
+		case 2:
 			System.out.println("Tudo bem :)");
-		}
+			break;
+		default:
+			System.out.println("Não estava esperando essa resposta. Tente novamente, por favor.");
+			break;
 
+		}
 		// Method for navegation in the account
 		nav();
-
-		sc.close();
 
 	}
 
