@@ -19,20 +19,28 @@ public class ContaEspecial extends Conta {
 	// Construtor
 	public ContaEspecial(int numero, String cpf) {
 		super(numero, cpf);
-		
+		System.out.println("===============================");
+		System.out.println("       Banco Nirvana G6");
+		System.out.println("  Seu paraiso financeiro");
+		System.out.println("===============================");
+		System.out.println("Olá você está na sua Conta Especial.");
 		Scanner scanner = new Scanner(System.in);
 		int resposta;
 		do {
-			System.out.println("Você deseja: (1- Creditar / 2- Debitar / 3- Sair)");
+			System.out.println("===============================");
+			System.out.println("Informe a opção desejada: (1- Creditar / 2- Debitar / 3- Sair)");
 			resposta = scanner.nextInt();
-			
 			if(resposta == 1) {
+				System.out.println("===============================");
 				System.out.println("Digite o valor: ");
 				double credito = scanner.nextDouble();
 				creditarLimite(credito);
+				System.out.println("===============================");
 				
 				System.out.println("Você tem R$ " + getSaldo() + " de saldo.");
 			}else if(resposta == 2){
+				
+				System.out.println("===============================");
 				System.out.println("Digite o valor: ");
 				double debito = scanner.nextDouble();
 				if(debito>getSaldo()) {
@@ -45,19 +53,22 @@ public class ContaEspecial extends Conta {
 						System.out.println("Débito não permitido.");
 					}else {
 						System.out.println("Resposta inválida, tente novamente!");
+						System.out.println("===============================");
 					}
 				}else {
 					super.debito(debito);
 				}
 				
 				System.out.println("Você tem R$ " + getSaldo() + " de saldo.");
+				
 			}else if(resposta == 3){
-				System.out.println("Obrigado.");
+				System.out.println("===============================");
+				System.out.println("Obrigado por utilizar o Banco Nirvana G6!");
+				System.out.println("Saindo...");
 			}else {
 				System.out.println("Resposta inválida, tente novamente!");
 			}
 		}while(resposta != 3);
-		scanner.close();
 	}
 	
 	public void usarLimite(double valor) {
@@ -84,6 +95,7 @@ public class ContaEspecial extends Conta {
 	
 	public void encerrar () {
 		if(limite<1000) {
+			System.out.println("===============================");
 			System.out.println("No momento não é possível encerrar sua conta, você precisa liquidar seu débito R$ " + limite);
 			System.out.println("Deseja liquidar? (1- Sim / 2- Não)");
 			Scanner scanner = new Scanner(System.in);
@@ -96,9 +108,6 @@ public class ContaEspecial extends Conta {
 			}else {
 				System.out.println("Resposta inválida, tente novamente!");
 			}
-			//TODO Chamar o método do menu inicial
-			scanner.close();
-				
 		}
 	}
 }
