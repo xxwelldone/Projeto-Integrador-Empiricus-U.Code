@@ -123,8 +123,10 @@ public class ContaEmpresa extends Conta {
 				System.out.println("Saldo atual: " + getSaldo());
 				System.out.println("Dívida: R$" + (10000f - getEmprestimoEmpresa()));
 
+			}else if(resposta == 3) {
+				System.out.println("Saindo...");
 			}
-			else if (resposta != 1 || resposta != 2 || resposta != 3) {
+			else{
 				System.out.println("Resposta inválida, tente novamente!");
 			}
 			
