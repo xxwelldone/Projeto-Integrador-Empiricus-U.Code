@@ -1,6 +1,5 @@
 package Bank;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import Entities.ContaCorrente;
@@ -12,7 +11,7 @@ import Entities.ContaPoupanca;
 public class Application {
 	
 //Wesley Menezes & Geisiele Luzia Deda
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int conta, niver, resposta;
 		String cpf;

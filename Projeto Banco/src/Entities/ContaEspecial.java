@@ -19,6 +19,9 @@ public class ContaEspecial extends Conta {
 	// Construtor
 	public ContaEspecial(int numero, String cpf) {
 		super(numero, cpf);
+		
+		setAtivo(true);
+		
 		System.out.println("===============================");
 		System.out.println("       Banco Nirvana G6");
 		System.out.println("  Seu paraiso financeiro");
@@ -27,28 +30,24 @@ public class ContaEspecial extends Conta {
 		Scanner scanner = new Scanner(System.in);
 		int resposta;
 		do {
-			System.out.println("===============================");
-			System.out.println("Informe a opção desejada: (1- Creditar / 2- Debitar / 3- Sair)");
+			System.out.println("Informe a opção desejada: (1- Creditar / 2- Debitar / 3- Sair / 4-Encerrar)");
 			resposta = scanner.nextInt();
 			if(resposta == 1) {
 				System.out.println("===============================");
 				System.out.println("Digite o valor: ");
 				double credito = scanner.nextDouble();
 				creditarLimite(credito);
-				System.out.println("===============================");
 				
-				System.out.println("Você tem R$ " + getSaldo() + " de saldo.");
 			}else if(resposta == 2){
 				
 				System.out.println("===============================");
 				System.out.println("Digite o valor: ");
 				double debito = scanner.nextDouble();
 				if(debito>getSaldo()) {
-					System.out.println("Saldo insuficiente, deseja utilizar limite? (1- Sim / 2- Não)");	
+					System.out.println("Saldo insuficiente, você tem R$ " + limite + " de limite. Deseja utilizar? (1- Sim / 2- Não)");	
 					resposta = scanner.nextInt();
 					if(resposta == 1) {
 						usarLimite(debito);
-						System.out.println("Você tem R$ " + limite + " de limite.");
 					}else if(resposta == 2) {
 						System.out.println("Débito não permitido.");
 					}else {
@@ -59,16 +58,20 @@ public class ContaEspecial extends Conta {
 					super.debito(debito);
 				}
 				
-				System.out.println("Você tem R$ " + getSaldo() + " de saldo.");
+				System.out.println("Operação realizada com sucesso!");
 				
 			}else if(resposta == 3){
 				System.out.println("===============================");
 				System.out.println("Obrigado por utilizar o Banco Nirvana G6!");
 				System.out.println("Saindo...");
+			
+			}else if(resposta == 4){
+				encerrar();
+				
 			}else {
 				System.out.println("Resposta inválida, tente novamente!");
 			}
-		}while(resposta != 3);
+		}while(resposta != 3 && isAtivo());
 	}
 	
 	public void usarLimite(double valor) {
@@ -94,19 +97,26 @@ public class ContaEspecial extends Conta {
 	}
 	
 	public void encerrar () {
+		Scanner scanner = new Scanner(System.in);
 		if(limite<1000) {
 			System.out.println("===============================");
 			System.out.println("No momento não é possível encerrar sua conta, você precisa liquidar seu débito R$ " + limite);
-			System.out.println("Deseja liquidar? (1- Sim / 2- Não)");
-			Scanner scanner = new Scanner(System.in);
-			int resposta = scanner.nextInt();
-			
-			if (resposta == 1) {
-				//TODO chamar método do crédito
-			}else if(resposta == 2){
-				System.out.println("Sua conta permanecerá ativa até a liquidação, obrigado"); 			
+		}else {
+			if(getSaldo() == 0) {
+								
+				System.out.println(("Deseja encerrar sua conta? (1- Sim / 2- Não)"));
+				int resposta = scanner.nextInt();
+				if (resposta == 1) {
+					System.out.println("===============================");
+					System.out.println("Sua conta foi encerrada. Obrigado por utilizar o Banco Nirvana G6!");
+					setAtivo(false);
+				}else if(resposta == 2){
+					System.out.println("Até breve!"); 			
+				}else {
+					System.out.println("Resposta inválida, tente novamente!");
+				}
 			}else {
-				System.out.println("Resposta inválida, tente novamente!");
+				System.out.println("No momento não é possível encerrar sua conta, você precisa zerar seu saldo R$ " + getSaldo());
 			}
 		}
 	}
