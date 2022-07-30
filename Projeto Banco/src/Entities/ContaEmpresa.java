@@ -35,7 +35,7 @@ public class ContaEmpresa extends Conta {
 		System.out.println("  Seu paraiso financeiro");
 		System.out.println("===============================");
 		System.out.println("Olá,");
-		System.out.println("Seu saldo atual: R$ " + super.getSaldo());
+		System.out.println("Seu saldo atual: R$" + super.getSaldo());
 		System.out.println("===============================");
 		
 		while(isAtivo()){
@@ -81,7 +81,7 @@ public class ContaEmpresa extends Conta {
 			if (limiteDisponivel < 10000f) {
 				System.out.println("============== Atenção ==================");
 				System.out.println("Para encerrar conta, precisas quitar o empréstimo.");
-				System.out.println("Seu valor de limite de empréstimo atual é de: " + getEmprestimoEmpresa());
+				System.out.println("Sua dívida: R$" + (10000f - getEmprestimoEmpresa()));
 				System.out.println("===============================");
 			} else {
 				super.setAtivo(false);
@@ -104,14 +104,14 @@ public class ContaEmpresa extends Conta {
 			resposta = scanner.nextInt();
 			
 			if (resposta == 1) {
-				System.out.println("Digite o valor que deseja receber emprestado (Limite disponível :"+ limiteDisponivel+ ")");
+				System.out.println("Digite o valor que deseja receber emprestado (Limite disponível:  R$"+ limiteDisponivel+ ")");
 				
 				pedido = scanner.nextFloat();
 				
 				if (pedido <= limiteDisponivel) {
 					credito(pedido);
 					subtrairEmprestimoEmpresa(pedido);
-					System.out.println("Empréstimo realizado com sucesso. Valor disponível: " + getEmprestimoEmpresa());
+					System.out.println("Empréstimo realizado com sucesso. Valor disponível:  R$" + getEmprestimoEmpresa());
 					} else {
 						System.out.println("Valor indisponível.");
 					}
@@ -121,7 +121,7 @@ public class ContaEmpresa extends Conta {
 				pagamento = scanner.nextFloat();
 				pagarEmprestimoEmpresa(pagamento);
 				System.out.println("Saldo atual: " + getSaldo());
-				System.out.println("Valor disponível para empréstimo: " + getEmprestimoEmpresa());
+				System.out.println("Dívida: R$" + (10000f - getEmprestimoEmpresa()));
 
 			}
 			else if (resposta != 1 || resposta != 2 || resposta != 3) {
