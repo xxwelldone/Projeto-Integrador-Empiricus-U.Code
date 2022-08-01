@@ -57,11 +57,18 @@ Scanner imput1 = new Scanner(System.in);
 					System.out.println("Obrigado por utilizar o banco Nirvana G6");
 					System.out.println("Saindo da conta..");
 				} else if (respSair == 2) {
-					System.out.println("Obrigado por utilizar o banco Nirvana G6");
-					System.out.println("Encerrando conta..");
-					super.setAtivo(false);
-					System.out.println("Conta encerrada");
-					System.out.println("Saindo...");
+					if (getSaldo() > 0) {
+						System.out.println("No momento não é possivel encerrar sua conta, você precisa zerar seu saldo de R$ " + getSaldo());
+						System.out.println("Saindo...");
+						
+					}else if (getSaldo() == 0) {
+						System.out.println("Obrigado por utilizar o banco Nirvana G6");
+						System.out.println("Encerrando conta..");
+						super.setAtivo(false);
+						System.out.println("Conta encerrada");
+						System.out.println("Saindo...");
+					}
+					
 				}
 				
 				} while (respSair != 1 && respSair != 2);
@@ -87,11 +94,17 @@ Scanner imput1 = new Scanner(System.in);
 					System.out.println("Obrigado por utilizar o banco Nirvana G6");
 					System.out.println("Saindo da conta..");
 				} else if (respSair == 2) {
-					System.out.println("Obrigado por utilizar o banco Nirvana G6");
-					System.out.println("Encerrando conta..");
-					super.setAtivo(false);
-					System.out.println("Conta encerrada");
-					System.out.println("Saindo...");
+					if (getSaldo() > 0) {
+						System.out.println("No momento não é possivel encerrar sua conta, você precisa zerar seu saldo de R$ " + getSaldo());
+						System.out.println("Saindo...");
+						
+					}else if (getSaldo() == 0) {
+						System.out.println("Obrigado por utilizar o banco Nirvana G6");
+						System.out.println("Encerrando conta..");
+						super.setAtivo(false);
+						System.out.println("Conta encerrada");
+						System.out.println("Saindo...");
+					}
 				}
 				
 				} while (respSair != 1 && respSair != 2);
