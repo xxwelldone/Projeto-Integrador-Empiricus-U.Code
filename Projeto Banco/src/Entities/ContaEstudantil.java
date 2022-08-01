@@ -29,8 +29,8 @@ public class ContaEstudantil extends Conta {
 							+ emprestimoLimite);
 	}
 
-// Method that checks and let user pay for loan acquired .
-//It is only possible to delete account and have boolean as false once debt is paid. 
+/* Method that checks and let user pay for loan acquired .
+	It is only possible to delete account and have boolean as false once debt is paid.*/ 
 	public void pagarEmprestimo(double valor) {
 
 		if (valor <= super.getSaldo()) {
@@ -55,16 +55,23 @@ public class ContaEstudantil extends Conta {
 	public void nav() {
 		int question;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Deseja realizar alguma nova operação? 1 - Sim || 2 - Não");
+		System.out.println("Deseja realizar alguma nova operação?");
+		System.out.println("1 - Sim || 2 - Não");
+		System.out.println();
 		question = sc.nextInt();
 
-		// Start of a loop where, while the user still wants to make a new operation, it
-		// still offers the possibilities to them.
+		/* Start of a loop where, while the user still wants to make a new operation, it
+		 still offers the possibilities to them.*/
 
 		while (question == 1) {
+			System.out.println("=================================");
+			System.out.println("|| 1 - Débito                  ||");
+			System.out.println("|| 2 - Crédito                 ||");
+			System.out.println("|| 3 - Emprestimo              ||");
+			System.out.println("|| 4 - Pagar divida em aberto  ||");
+			System.out.println("|| 5 - Sair/Encerrar           ||");
+			System.out.println("===============================");
 
-			System.out.println(
-					"Informe o tipo de operação que deseja realizar: 1 - Débito | 2 - Crédito | 3 - Emprestimo | 4 - Pagar divida em aberto");
 			int operacoes = sc.nextInt();
 
 			// Switch separating the operations
@@ -120,6 +127,12 @@ public class ContaEstudantil extends Conta {
 					}
 				}
 				break;
+/* Since buffer still had the number "1" in it, it wouldn't stop while loop even once account was cancelled, 
+	a workaround was to set 'question' to zero so once cancelled it would automatic return to main menu.*/
+			case 5:
+				cancelar();
+				question = 0;
+				break;
 
 			default:
 				System.out.println("===============================");
@@ -127,15 +140,16 @@ public class ContaEstudantil extends Conta {
 				System.out.println("===============================");
 				break;
 			}
-			// Finishing the Switch, we are still in the While loop making sure the user are
-			// still interested on making new baking operations
-
-			System.out.println("Fim da operação. Deseja realizar uma nova operação? 1 - Sim | 2 - Não");
-			question = sc.nextInt();
+		
+			
 		}
-		// Checking if there are debts and whether to delete account or not.
-		cancelar();
+		
+/* To solve a problem of continuation in a menu I decided to use If Structure, jump user to cancel method and then, 
+		if the intention isn't cancelling, bring it back to the while loop.*/
 
+		if (question==2) {
+			cancelar();
+			}
 	}
 
 // Method for deleting account and checking whether it has debts or not before allowing and setting boolean attribute as false.
@@ -144,7 +158,9 @@ public class ContaEstudantil extends Conta {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("===============================");
 		System.out.println();
-		System.out.println("Deseja continuar usando nossa conta ou pretende encerrar? 1 - Encerrar | 2 - Continuar");
+		System.out.println("Deseja continuar usando nossa conta ou pretende encerrar?");
+		System.out.println("1 - Encerrar | 2 - Continuar");
+		System.out.println();
 		cancelQuest = sc.nextInt();
 
 		switch (cancelQuest) {
@@ -153,7 +169,7 @@ public class ContaEstudantil extends Conta {
 				System.out.println("============== Atenção ==================");
 				System.out.println();
 				System.out.println(
-						"Você ainda não liquidou seu valor de empréstimo. Para encerrar sua conta precisa é preciso liquidar o empréstimo.");
+						"Você ainda não liquidou seu valor de empréstimo. Para encerrar sua conta é preciso liquidar o empréstimo.");
 				System.out.println("Seu valor de limite de empréstimo atual é de: " + emprestimoLimite);
 				System.out.println();
 				System.out.println("===============================");
@@ -187,13 +203,15 @@ public class ContaEstudantil extends Conta {
 		System.out.println("Olá,");
 		System.out.println("Seu saldo atual: R$ " + super.getSaldo());
 		System.out.println("===============================");
-
+		super.setAtivo(true);
 		// From this point on starts the logic of asking for banking operations and
 		// whether to have a loan or not.
 
 		// First try on asking for loan
 		System.out.println(
-				"Seu tipo de conta é estudantil e isso te da direito à um emprestimo de até 5 mil. Deseja solicitar? 1- Sim | 2 - Não");
+				"Seu tipo de conta é estudantil e isso te da direito à um emprestimo de até 5 mil. Deseja solicitar?");
+		System.out.println("1- Sim | 2 - Não");
+		System.out.println();
 		int resp = sc.nextInt();
 
 		switch (resp) {
@@ -212,6 +230,7 @@ public class ContaEstudantil extends Conta {
 		}
 		// Method for navegation in the account
 		nav();
+		
 
 	}
 

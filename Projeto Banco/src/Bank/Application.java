@@ -10,10 +10,10 @@ import Entities.ContaPoupanca;
 
 public class Application {
 	
-//Wesley Menezes & Geisiele Luzia Deda
+//Wesley Menezes, Geisiele Luzia Deda, Julio Batista
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int conta, niver, resposta;
+		int conta, resposta;
 		String cpf;
 		Scanner sc = new Scanner(System.in);
 		
@@ -38,17 +38,7 @@ public class Application {
 			
 			switch (resposta) {
 			case 1:
-				System.out.println("Digite o número da conta: ");
-				conta = sc.nextInt();
-				System.out.println("===============================");
-				
-				System.out.println("Digite o CPF: ");
-				cpf = sc.nextLine();
-				sc.nextLine();
-//			System.out.println("Data de aniversário:  ");
-//			niver = sc.nextInt();
-				ContaPoupanca poupanca = new ContaPoupanca(conta, cpf);
-				poupanca.exibirMenu();
+				ContaPoupanca.exibirMenu();
 				break;
 				
 			case 2:

@@ -56,9 +56,9 @@ public class ContaEspecial extends Conta {
 					}
 				}else {
 					super.debito(debito);
+					System.out.println("Operação realizada com sucesso!");
 				}
 				
-				System.out.println("Operação realizada com sucesso!");
 				
 			}else if(resposta == 3){
 				System.out.println("===============================");
@@ -79,6 +79,10 @@ public class ContaEspecial extends Conta {
 		if(valorDisponivel>=valor) {
 			super.debito(valor, limite);
 			setLimite(valorDisponivel-valor);
+			System.out.println("Operação realizada com sucesso!");
+
+		}else {
+			System.out.println("O valor solicitado excede o permitido.");
 		}
 	}
 
@@ -99,8 +103,9 @@ public class ContaEspecial extends Conta {
 	public void encerrar () {
 		Scanner scanner = new Scanner(System.in);
 		if(limite<1000) {
+			double valorUtilizadoLimite = 1000 - limite;
 			System.out.println("===============================");
-			System.out.println("No momento não é possível encerrar sua conta, você precisa liquidar seu débito R$ " + limite);
+			System.out.println("No momento não é possível encerrar sua conta, você precisa liquidar seu débito R$ " + valorUtilizadoLimite);
 		}else {
 			if(getSaldo() == 0) {
 								

@@ -20,11 +20,10 @@ public class ContaPoupanca extends Conta {
 	}
 
 	public void correcao(int dia) {
-
+		
 		if (diaAniversarioPoupanca == dia) {
-			double correcao = getSaldo() * 0.05;
+			double correcao = getSaldo() * 0.005;
 			credito(correcao);
-
 		}
 
 	}

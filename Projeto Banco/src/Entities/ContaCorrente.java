@@ -14,6 +14,7 @@ public class ContaCorrente extends Conta {
 	private int contaMov = 0;
 	private int valorDeb = 0;
 	private int valorCre = 0;
+	private int respSair = 1;
 //END ATRIBUTES
 //===============================================================================================================
 //INITIATION SCANNER
@@ -42,11 +43,35 @@ Scanner imput1 = new Scanner(System.in);
 					}
 			}
 			if (resposta == 2) {
-				System.out.println("Obrigado por utilizar o banco Nirvana G6");
-				System.out.println("Encerrando conta..");
-				super.setAtivo(false);
-				System.out.println("Conta encerrada");
-				System.out.println("Saindo...");	
+				do {
+					if (respSair != 1 && respSair != 2) {
+						System.out.println("Erro, tente novamente");
+					}
+				System.out.println("");
+				System.out.println("1 - Sair da Conta");
+				System.out.println("2 - Encerrar Conta");
+				System.out.print("Informe a opção desejada: ");
+				respSair = imput1.nextInt();
+				
+				if (respSair == 1) {
+					System.out.println("Obrigado por utilizar o banco Nirvana G6");
+					System.out.println("Saindo da conta..");
+				} else if (respSair == 2) {
+					if (getSaldo() > 0) {
+						System.out.println("No momento não é possivel encerrar sua conta, você precisa zerar seu saldo de R$ " + getSaldo());
+						System.out.println("Saindo...");
+						
+					}else if (getSaldo() == 0) {
+						System.out.println("Obrigado por utilizar o banco Nirvana G6");
+						System.out.println("Encerrando conta..");
+						super.setAtivo(false);
+						System.out.println("Conta encerrada");
+						System.out.println("Saindo...");
+					}
+					
+				}
+				
+				} while (respSair != 1 && respSair != 2);
 				
 			}
 				
@@ -55,11 +80,34 @@ Scanner imput1 = new Scanner(System.in);
 			}
 			
 			if (contadorTalao == 3) {
-				System.out.println("Obrigado por utilizar o banco Nirvana G6");
-				System.out.println("Encerrando conta..");
-				System.out.println("Conta encerrada");
-				super.setAtivo(false);
-				System.out.println("Saindo...");
+				do {
+					if (respSair != 1 && respSair != 2) {
+						System.out.println("Erro, tente novamente");
+					}
+				System.out.println("");
+				System.out.println("1 - Sair da Conta");
+				System.out.println("2 - Encerrar Conta");
+				System.out.print("Informe a opção desejada: ");
+				respSair = imput1.nextInt();
+				
+				if (respSair == 1) {
+					System.out.println("Obrigado por utilizar o banco Nirvana G6");
+					System.out.println("Saindo da conta..");
+				} else if (respSair == 2) {
+					if (getSaldo() > 0) {
+						System.out.println("No momento não é possivel encerrar sua conta, você precisa zerar seu saldo de R$ " + getSaldo());
+						System.out.println("Saindo...");
+						
+					}else if (getSaldo() == 0) {
+						System.out.println("Obrigado por utilizar o banco Nirvana G6");
+						System.out.println("Encerrando conta..");
+						super.setAtivo(false);
+						System.out.println("Conta encerrada");
+						System.out.println("Saindo...");
+					}
+				}
+				
+				} while (respSair != 1 && respSair != 2);
 			}
 			
 		} while (resposta != 2 && contadorTalao < 3);
@@ -85,10 +133,11 @@ Scanner imput1 = new Scanner(System.in);
 			if (movimentoEsco != 1 && movimentoEsco != 2) {
 				System.out.println("Erro, código inválido!");
 				System.out.println("Tente novamente");
+				System.out.println();
 			}
-				System.out.println("1 - DÉBITO");
-				System.out.println("2 - CRÉDITO");
-				System.out.println("3 - CANCELAR/SAIR");
+				System.out.println("1 - Débito");
+				System.out.println("2 - Crédito");
+				System.out.println("3 - Cancelar/Sair");
 				System.out.print("Escolha o movimento que deseja realizar:");
 				movimentoEsco = imput1.nextInt();
 				
@@ -144,7 +193,7 @@ Scanner imput1 = new Scanner(System.in);
 			movSair();
 		}
 			
-		} while (contaMov < 100 && movimentoEsco != 3);
+		} while (contaMov < 1000 && movimentoEsco != 3);
 	}
 //END CONSTRUCTOR
 //===============================================================================================================
