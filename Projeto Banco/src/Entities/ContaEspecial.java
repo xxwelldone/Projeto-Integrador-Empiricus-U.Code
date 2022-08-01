@@ -103,8 +103,9 @@ public class ContaEspecial extends Conta {
 	public void encerrar () {
 		Scanner scanner = new Scanner(System.in);
 		if(limite<1000) {
+			double valorUtilizadoLimite = 1000 - limite;
 			System.out.println("===============================");
-			System.out.println("No momento não é possível encerrar sua conta, você precisa liquidar seu débito R$ " + limite);
+			System.out.println("No momento não é possível encerrar sua conta, você precisa liquidar seu débito R$ " + valorUtilizadoLimite);
 		}else {
 			if(getSaldo() == 0) {
 								
