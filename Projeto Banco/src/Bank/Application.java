@@ -10,7 +10,7 @@ import Entities.ContaPoupanca;
 
 public class Application {
 	
-//Wesley Menezes & Geisiele Luzia Deda
+//Wesley Menezes, Geisiele Luzia Deda, Julio Batista
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int conta, resposta;
