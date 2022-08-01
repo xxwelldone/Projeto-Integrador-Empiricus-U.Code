@@ -119,7 +119,11 @@ public class ContaEmpresa extends Conta {
 			} else if(resposta == 2){
 				System.out.println("Digite o valor que deseja quitar da dívida do empréstimo: ");
 				pagamento = scanner.nextFloat();
-				pagarEmprestimoEmpresa(pagamento);
+				if(pagamento <= (10000f - getEmprestimoEmpresa())){
+					pagarEmprestimoEmpresa(pagamento);
+				}else {
+					System.out.println("Operação cancelada: pagamento maior que dívida.");
+				}
 				System.out.println("Saldo atual: " + getSaldo());
 				System.out.println("Dívida: R$" + (10000f - getEmprestimoEmpresa()));
 
