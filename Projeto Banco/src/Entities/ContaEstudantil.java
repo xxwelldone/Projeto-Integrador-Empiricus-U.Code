@@ -169,7 +169,7 @@ public class ContaEstudantil extends Conta {
 				System.out.println("============== Atenção ==================");
 				System.out.println();
 				System.out.println(
-						"Você ainda não liquidou seu valor de empréstimo. Para encerrar sua conta precisa é preciso liquidar o empréstimo.");
+						"Você ainda não liquidou seu valor de empréstimo. Para encerrar sua conta é preciso liquidar o empréstimo.");
 				System.out.println("Seu valor de limite de empréstimo atual é de: " + emprestimoLimite);
 				System.out.println();
 				System.out.println("===============================");
